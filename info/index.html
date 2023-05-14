@@ -18,7 +18,6 @@
     License: https://www.gnu.org/licenses/gpl-3.0.en.html
 -->
 
-
 <html>
 
 <head>
@@ -30,38 +29,36 @@
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
 
-    <link rel="icon" type="image/x-icon" href="/static/icons/favicon_32.png">
+        <link rel="icon" type="image/x-icon" href="/static/icons/favicon_32.png">
 
         <style>
             body {margin: 5% auto; background: #f2f2f2; color: #444444; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.8; text-shadow: 0 1px 0 #ffffff; max-width: 73%;}
             code {background: white;}
             a {border-bottom: 1px solid #444444; color: #444444; text-decoration: none;}
             a:hover {border-bottom: 0;}
-            hr {overflow-y: auto; height: 200px;}
         </style>
 
-	<link rel="preload" href="/static/js/main.js" as="script" />
 </head>
 
 <body>
 
         <header>
             <h1><img src='/static/icons/favicon_32.png' style='height:1em;' onclick="window.location.href='/'"/> <span style='color:#9b1c2c'>New Campaign Trail</span> Blog</h1>
-            <blockquote><em>"It gets worse."</em> - Yoru</blockquote>
+            <blockquote><em>"It's cold outside, there's no kind of atmosphere."</em> - Dave Lister</blockquote>
         </header>
 
-	<div id='blogPosts'>
-	
-	</div>
-
-    <div id="blogControls">
-        <a onclick="prev_page()">Previous</a> <a onclick="next_page()">Next</a><br>
-        <code id="page_counter">Page 1</code>
+	<div id='main_info'>
+        <a href="/">Back</a>
+        <p>This is a blog/devlog for the game The New Campaign Trail. It includes updates and other important information, given that posting to Reddit doesn't have quite the same permanence as something like this does.</p>
+        <p>Play the actual game <a href="https://www.newcampaigntrail.com/" target="_blank">here</a> (though I'm not sure how you would manage to find this without playing the game). Play the original game by Dan Bryan <a href="http://www.americanhistoryusa.com/" target="_blank">here</a>.</p>
+        <p>Blog site design inspired by, and CSS for pages from <a href="https://evenbettermotherfucking.website/" target="_blank">Even Better Motherfucking Website</a> by Guilherme Pangnotta.</p>
+        <p>View copyright notice for the blog's code <a href="/info/copy.txt" target="_blank">here</a>, and the license <a href="/LICENSE.txt" target="_blank">here</a>. <em>[TLDR; it's open source]</em></p>
+        <p>Since there's still extra space on the page, here's a picture of LBJ being sworn in:</p>
+        <figure>
+            <img src="/static/images/lbj.jpg" width="400" title="LBJ being sworn in." alt="Then-Vice President Lyndon B. Johnson being sworn in as President." />
+            <figcaption><em>From the NARA & DVIDS Public Domain Archive. <a href="https://nara.getarchive.net/media/photograph-of-the-swearing-in-of-lyndon-b-johnson-as-president-428ec5" target="_blank">Source</a>.</em></figcaption>
+        </figure>
     </div>
-
-    <a style='position: fixed;right:10px;bottom:10px;' href="/info">More Info</a>
-
-	<script src='/static/js/main.js'></script>
 
 </body>
 

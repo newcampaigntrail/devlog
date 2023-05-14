@@ -1,6 +1,21 @@
 /*
-Copyright (C) 2023- Decstar
-License: https://www.gnu.org/licenses/gpl-3.0.en.html
+    NCT Blog
+    Copyright (C) 2023 Decstar
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    License: https://www.gnu.org/licenses/gpl-3.0.en.html
 */
 
 const DIR_HEAD = "/posts/"
@@ -26,7 +41,8 @@ e = {
 	post_count: 0,
 	post_data: {},
 	page_counter: 1,
-	page_max: 0
+	page_max: 0,
+	init: false
 }
 
 // find the number of posts there are
@@ -72,8 +88,30 @@ load_post = (post_num, pos) => {
 	});
 }
 
+url_skip = () => {
+	if (e.init) {
+		return;
+	}
+	e.init = true;
+	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}/${e.page_max}`
+
+	let splitURL = window.location.href.split("/");
+	modifier = splitURL[splitURL.length - 1];
+	modifierFinal = modifier.replaceAll("#", "")
+	if (modifier !== modifierFinal) {
+		page = Number(modifierFinal);
+		skip_to(page)
+		return true;
+	}
+	return false;
+}
+
 load_posts = () => {
 	e.start_post = e.start_post ? e.start_post : e.post_count
+
+	if (url_skip()) {
+		return;
+	}
 
 	let count = 0;
 
@@ -95,7 +133,9 @@ template_posts = (count) => {
 display_post = (post, pos) => {
 	let data = e.post_data[post];
 	let post_field = document.getElementById("blogPosts");
-	post_field.children[pos - 1].innerHTML = data;
+	let arr = JSON.stringify([post,e.page_counter]);
+	let enlarge_button = `<a onclick='window.location.href="/reader/#${arr}"'>Enlarge</a>`
+	post_field.children[pos - 1].innerHTML = enlarge_button + data;
 }
 
 next_page = () => {
@@ -106,7 +146,7 @@ next_page = () => {
 	post_field.innerHTML = "";
 	e.start_post = e.start_post - POST_DISPLAY
 	e.page_counter++;
-	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}`
+	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}/${e.page_max}`
 	load_posts();
 }
 
@@ -118,6 +158,16 @@ prev_page = () => {
 	post_field.innerHTML = "";
 	e.start_post = e.start_post + POST_DISPLAY
 	e.page_counter--;
-	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}`
+	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}/${e.page_max}`
+	load_posts();
+}
+
+skip_to = (page) => {
+	e.page_counter = page;
+	page = page - 1;
+	let post_field = document.getElementById("blogPosts");
+	post_field.innerHTML = "";
+	e.start_post = e.post_count - (POST_DISPLAY * page)
+	document.getElementById("page_counter").innerHTML = `Page ${e.page_counter}/${e.page_max}`
 	load_posts();
 }
