@@ -18,19 +18,30 @@
     License: https://www.gnu.org/licenses/gpl-3.0.en.html
 */
 
-const DIR_HEAD = "/posts/"
+DIR_HEAD = "";
+
+try {
+	DIR_HEAD = dir;
+} catch {
+	DIR_HEAD = "/posts/"
+}
+
+HOME_DIR = "/";
+
+try {
+    HOME_DIR = home;
+} catch {}
 
 let splitURL = window.location.href.split("/");
 modifier = splitURL[splitURL.length - 1];
 modifier = modifier.replaceAll("#", ""); // should now be an array
-const PAGE_CHOICE = JSON.parse(modifier); // format [post, page]
+//const PAGE_CHOICE = JSON.parse(modifier); // format [post, page]
+const PAGE_CHOICE = [Number(modifier)]
 
 document.title = `NCB Post #${PAGE_CHOICE[0]}`; // set to apt blog post title
 
-console.log(PAGE_CHOICE);
-
 back_to_main = () => {
-    window.location.href = `/#${PAGE_CHOICE[1]}`;
+    window.location.href = `${HOME_DIR}`; //#${PAGE_CHOICE[1]}
 }
 
 load_post = () => {

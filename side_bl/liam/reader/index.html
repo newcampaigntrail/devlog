@@ -18,57 +18,52 @@
     License: https://www.gnu.org/licenses/gpl-3.0.en.html
 -->
 
-
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
-    <title>New Campaign Blog</title>
-    <meta name="description" content="New Campaign Trail developer blog; updates/more information about NCT." />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
-    
-    <link rel="icon" type="image/x-icon" href="/static/icons/favicon_32.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+        <title>New Campaign Blog</title>
+        <meta name="description" content="New Campaign Trail developer blog; updates/more information about NCT." />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <meta http-equiv="Expires" content="0"/>
+
+	  <link rel="icon" type="image/x-icon" href="/static/icons/favicon_32.png">
 
         <style>
             body {margin: 5% auto; background: #f2f2f2; color: #444444; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.8; text-shadow: 0 1px 0 #ffffff; max-width: 73%;}
             code {background: white;}
             a {border-bottom: 1px solid #444444; color: #444444; text-decoration: none;}
             a:hover {border-bottom: 0;}
-            hr {overflow-y: auto; height: 200px;}
         </style>
 
-	<link rel="preload" href="/static/js/main.js" as="script" />
+	<link rel="preload" href="/static/js/reader.js" as="script" />
 </head>
 
 <body>
 
         <header>
             <h1><img src='/static/icons/favicon_32.png' style='height:1em;' onclick="window.location.href='/'"/> <span style='color:#9b1c2c'>New Campaign Trail</span> Blog</h1>
-            <blockquote><em>"It gets worse."</em> - Yoru</blockquote>
+            <blockquote><em>"If you have never failed you have never lived."</em> - Abe</blockquote>
         </header>
     
-    <div id="sideBlogs">
-        <span>
-            <b>Main</b> 
-            <a href="/side_bl/liam">LIaM</a> 
-        </span>
-    </div><br>
+    <p><a onclick='back_to_main()'>Back To Main</a></p>
 
-	<div id='blogPosts'>
+	<div id='readerFrame'>
 	
 	</div>
 
-    <div id="blogControls">
-        <a onclick="prev_page()">Previous</a> <a onclick="next_page()">Next</a><br>
-        <code id="page_counter">Page 1</code>
-    </div>
+    <script>
+        dir = "/side_bl/liam/posts/";
+        home = "/side_bl/liam/";
+    </script>
 
-    <a style='position: fixed;right:10px;bottom:10px;' href="/info">More Info</a>
-
-	<script src='/static/js/main.js'></script>
+	<script src='/static/js/reader.js'></script>
+    
+    <script>
+        document.title = `LiAM Post #${PAGE_CHOICE[0]}`;
+    </script>
 
 </body>
 

@@ -18,7 +18,12 @@
     License: https://www.gnu.org/licenses/gpl-3.0.en.html
 */
 
-const DIR_HEAD = "/posts/"
+DIR_HEAD = "";
+try {
+	DIR_HEAD = dir;
+} catch {
+	DIR_HEAD = "/posts/"
+}
 const POST_DISPLAY = 3;
 
 function fileExists(url, callback) {
@@ -42,7 +47,8 @@ e = {
 	post_data: {},
 	page_counter: 1,
 	page_max: 0,
-	init: false
+	init: false,
+	reader: "/reader/"
 }
 
 // find the number of posts there are
@@ -65,10 +71,10 @@ iterate_file(true)
 */
 
 check_post_c = () => {
-	fetch("/posts/post_count.txt").then(response=>response.text().then(f=>{
+	fetch(DIR_HEAD+"/post_count.txt").then(response=>response.text().then(f=>{
 		f = Number(f);
 		e.post_count = f;
-		e.page_max = (e.post_count - (e.post_count % POST_DISPLAY)) / POST_DISPLAY + 1
+		e.page_max = Math.ceil(e.post_count/POST_DISPLAY);
 		load_posts();
 	}))
 }
@@ -132,9 +138,12 @@ template_posts = (count) => {
 
 display_post = (post, pos) => {
 	let data = e.post_data[post];
+	/*data = data.replace(/<img\b[^>]*?\bsrc\s*=\s*['"][^'"]*['"][^>]*?>/gi, function(match) {
+		return match.replace(/src\s*=\s*['"][^'"]*['"]/gi, '');
+	});*/ // emergency override to prevent images from being loaded in the post previews
 	let post_field = document.getElementById("blogPosts");
-	let arr = JSON.stringify([post,e.page_counter]);
-	let enlarge_button = `<a onclick='window.location.href="/reader/#${arr}"'>Enlarge</a>`
+	let arr = post //JSON.stringify([post,e.page_counter]);
+	let enlarge_button = `<a onclick='window.location.href="${e.reader}#${arr}"'>Enlarge</a>`
 	post_field.children[pos - 1].innerHTML = enlarge_button + data;
 }
 
