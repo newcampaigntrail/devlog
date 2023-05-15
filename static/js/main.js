@@ -143,7 +143,7 @@ display_post = (post, pos) => {
 	});*/ // emergency override to prevent images from being loaded in the post previews
 	let post_field = document.getElementById("blogPosts");
 	let arr = post //JSON.stringify([post,e.page_counter]);
-	let enlarge_button = `<a onclick='window.location.href="${e.reader}#${arr}"'>Enlarge</a>`
+	let enlarge_button = `<a href="${e.reader}#${arr}">Enlarge</a>`
 	post_field.children[pos - 1].innerHTML = enlarge_button + data;
 }
 
