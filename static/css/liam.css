@@ -1,0 +1,8 @@
+body {margin: 5% 25% auto; background: #0d0d0d; color: #fafafa; font-family: 'Times New Roman', Times, serif; font-size: 18px; line-height: 1.8; text-shadow: 0 1px 0 #000000;}
+@media only screen and (max-width: 768px){body{margin: 5% 10% auto;}}
+h1, h2 {font-family: Cheltenham, 'Times New Roman', Times, serif}
+code {background: #101010;}
+a {border-bottom: 1px solid #b7cfff; color: #b7cfff; text-decoration: none;}
+a:hover {border-bottom: 0;}
+figure {width:fit-content;margin-left:auto;margin-right:auto;}
+hr {overflow-y: auto; height: 200px;}
