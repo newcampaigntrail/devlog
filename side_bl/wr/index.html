@@ -24,7 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
-    <title>New Campaign Blog</title>
+    <title>NCB - Writing Right</title>
     <meta name="description" content="New Campaign Trail developer blog; updates/more information about NCT." />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -32,7 +32,7 @@
     
     <link rel="icon" type="image/x-icon" href="/static/icons/favicon_32.png">
 
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/wr.css">
 
 	<link rel="preload" href="/static/js/main.js" as="script" />
 </head>
@@ -41,16 +41,19 @@
 
         <header>
             <h1><img src='/static/icons/favicon_32.png' style='height:1em;' onclick="window.location.href='/'"/> <span style='color:#9b1c2c'>New Campaign Trail</span> Blog</h1>
-            <blockquote><em>"It gets worse."</em> - Yoru</blockquote>
+            <blockquote><em>"You WILL make mistakes."</em> - Tom</blockquote>
         </header>
     
     <div id="sideBlogs">
         <span>
-            <b>Main</b> 
+            <a href="/">Main</a> 
             <a href="/side_bl/liam">LiAM</a> 
-            <a href="/side_bl/wr">WR</a> 
+            <b>WR</b> 
         </span>
-    </div><br>
+    </div>
+
+    <h2>Writing Right</h2>
+    <p>User-made side-blog by Tom: <em>"I hope to use this column to talk about where mods went wrong on their writing, where they went right, and how we can learn from their mistakes or triumphs."</em></p>
 
 	<div id='blogPosts'>
 	
@@ -63,7 +66,15 @@
 
     <a style='position: fixed;right:10px;bottom:10px;' href="/info">More Info</a>
 
+    <script>
+        dir = "/side_bl/wr/posts/"
+    </script>
+
 	<script src='/static/js/main.js'></script>
+
+    <script>
+        e.reader = "/side_bl/wr/reader/"
+    </script>
 
 </body>
 
